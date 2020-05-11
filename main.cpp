@@ -4,6 +4,6 @@
 using namespace std;
 
 int main() {
-  cout << "Lucash needs to stinky"
+  cout << "foobar"
   return 0;
 }

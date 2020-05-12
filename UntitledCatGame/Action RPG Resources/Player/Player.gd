@@ -4,11 +4,21 @@ const FRICTION = 1250
 const ACCELERATION = 400
 const MAX_SPEED = 80
 
+enum{
+	MOVE,
+	ROLL,
+	ATTACK
+}
+
+var state
 var velocity = Vector2.ZERO
 
 onready var animationplayer = $AnimaitonPlayer
 onready var animationtree = $AnimationTree
 onready var animationstate = animationtree.get("parameters/playback")
+
+func _ready():
+	animationtree.active = true
 
 #movement
 func _physics_process(delta):

@@ -8,6 +8,7 @@ var velocity = Vector2.ZERO
 
 onready var animationplayer = $AnimaitonPlayer
 onready var animationtree = $AnimationTree
+onready var animationstate = animationtree.get("parameters/playback")
 
 #movement
 func _physics_process(delta):
@@ -20,9 +21,10 @@ func _physics_process(delta):
 	if input_vector != Vector2.ZERO:
 		animationtree.set("parameters/Idle/blend_position", input_vector)
 		animationtree.set("parameters/Run/blend_position", input_vector)
+		animationstate.travel("Run")
 		velocity = velocity.move_toward(input_vector * MAX_SPEED, ACCELERATION * delta)
 	else:
-		animationplayer.play("IdleRight")
+		animationstate.travel("Idle")
 		velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
 	
 	velocity = move_and_slide(velocity)

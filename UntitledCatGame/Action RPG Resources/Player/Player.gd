@@ -6,6 +6,7 @@ const MAX_SPEED = 80
 
 var velocity = Vector2.ZERO
 
+onready var animationplayer = $AnimaitonPlayer
 
 #movement
 func _physics_process(delta):
@@ -16,8 +17,13 @@ func _physics_process(delta):
 	
 	#set acceleration, max speed and friction
 	if input_vector != Vector2.ZERO:
+		if input_vector.x > 0:
+			animationplayer.play("RunRight")
+		else:
+			animationplayer.play("RunLeft")
 		velocity = velocity.move_toward(input_vector * MAX_SPEED, ACCELERATION * delta)
 	else:
+		animationplayer.play("IdleRight")
 		velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
 	
 	velocity = move_and_slide(velocity)

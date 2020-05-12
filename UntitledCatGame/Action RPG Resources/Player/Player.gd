@@ -7,6 +7,7 @@ const MAX_SPEED = 80
 var velocity = Vector2.ZERO
 
 onready var animationplayer = $AnimaitonPlayer
+onready var animationtree = $AnimationTree
 
 #movement
 func _physics_process(delta):
@@ -17,10 +18,8 @@ func _physics_process(delta):
 	
 	#set acceleration, max speed and friction
 	if input_vector != Vector2.ZERO:
-		if input_vector.x > 0:
-			animationplayer.play("RunRight")
-		else:
-			animationplayer.play("RunLeft")
+		animationtree.set("parameters/Idle/blend_position", input_vector)
+		animationtree.set("parameters/Run/blend_position", input_vector)
 		velocity = velocity.move_toward(input_vector * MAX_SPEED, ACCELERATION * delta)
 	else:
 		animationplayer.play("IdleRight")

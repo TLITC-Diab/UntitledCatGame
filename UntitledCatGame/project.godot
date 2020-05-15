@@ -87,6 +87,17 @@ attack={
  ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="World"
+2d_physics/layer_2="Player"
+2d_physics/layer_3="PlayerHurtbox"
+2d_physics/layer_4="EnemyHurtbox"
+2d_physics/layer_5="Hitbox"
+2d_render/World=false
+2d_physics/World=false
+2d_physics/Wrold=false
+
 [rendering]
 
 environment/default_environment="res://default_env.tres"
